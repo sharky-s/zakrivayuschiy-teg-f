@@ -13,4 +13,36 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+
+  /* Основной шрифт Inter с системным запасным */
+  font-family: var(--font-main), Arial, sans-serif;
+
+  /* Для вариативного шрифта указываем нужный вес
+     через font-variation-settings */
+  font-variation-settings: "wght" var(--fw-text);
+}
+
+
+.header{}
+
+.header__fullwidth{}
+
+.header__content{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.header__title{
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  font-family: var(--font-accent);
+}
+
+.header__text{
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  font-family: var(--font-accent);
+
 }

@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Закрывающий тег</title>
-    <link rel="stylesheet" href="./fonts/fonts.css" />
-    <link rel="stylesheet" href="./styles/variables.css" />
-    <link rel="stylesheet" href="./styles/globals.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/animations.css" />
-  </head>
-  <body class="page">
-    <header class="header"></header>
-    <main></main>
-    <script src="./scripts/like.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Закрывающий тег</title>
+  <link rel="stylesheet" href="./fonts/fonts.css" />
+  <link rel="stylesheet" href="./styles/variables.css" />
+  <link rel="stylesheet" href="./styles/globals.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/animations.css" />
+  <!-- 1. Fallback-иконки PNG (без медиазапроса).
+      - Старые браузеры возьмут именно их.
+      - Несколько размеров (16, 32, 48, 64).-->
+  <link rel="icon" type="image/png" href="images/favicon-16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="images/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/favicon-48.png" sizes="48x48">
+  <link rel="icon" type="image/png" href="images/favicon-64.png" sizes="64x64">
+  <!-- 2. PNG-иконки для светлой темы.
+      - Если браузер поддерживает prefers-color-scheme, при светлой теме приоритет будет за этими PNG.-->
+  <link rel="icon" type="image/png" href="images/icon_light-16.png" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="images/icon_light-32.png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="images/icon_light-48.png" sizes="48x48" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="images/icon_light-64.png" sizes="64x64" media="(prefers-color-scheme: light)">
+  <!-- 3. PNG-иконки для тёмной темы.
+      - То же самое, но с media="(prefers-color-scheme: dark)".-->
+  <link rel="icon" type="image/png" href="images/icon_dark-16.png" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="images/icon_dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="images/icon_dark-48.png" sizes="48x48" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="images/icon_dark-64.png" sizes="64x64" media="(prefers-color-scheme: dark)">
+  <!-- 4. SVG-иконки для светлой/тёмной темы.
+      - Если браузер поддерживает SVG и media-query (light/dark), они могут «перекрыть» PNG-иконки. 
+      - sizes="any" для векторной иконки (масштабируется на любой размер).-->
+  <link rel="icon" type="image/svg+xml" href="svg/icon_light.svg" sizes="any" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="svg/icon_dark.svg" sizes="any" media="(prefers-color-scheme: dark)">
+  <!-- 5. Apple Touch Icon (для iOS).
+      - При добавлении сайта на домашний экран iPhone/iPad будет использоваться именно эта иконка (180x180).
+      - iOS не меняет иконку по светлой/тёмной теме, поэтому обычно используют одну версию.-->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icon_light-180.png">
+  <!-- (Необязательно) Manifest для PWA, где можно указать ещё иконки 192x192, 512x512 -->
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
+</head>
+
+<body class="page">
+  <header class="header header__fullwidth">
+      <div class="header__content">
+        <h1 class="header__title">&lt;/HTML&gt;</h1>
+        <p class="header__text">Закрывающий тег</p>
+      </div>
+  </header>
+  <main>
+
+  </main>
+  <script src="./scripts/like.js"></script>
+</body>
+
 </html>
