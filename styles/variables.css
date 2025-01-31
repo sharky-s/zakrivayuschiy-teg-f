@@ -10,4 +10,14 @@
 
   --header-min-width: 320px;
   --header-max-width: 1440px;
+
+  --Themes-mainColor: #000000;
+  --Themes-backgroundColor: #FFFFFF;
+  --Themes-accentColor: #FF0000;
+
+
+  /* Паддинги для header__content */
+  --header-padding-vertical: clamp(80px, 10vh, 128px);
+  --header-padding-horizontal: clamp(20px, 5vw, 120px);
+
 }

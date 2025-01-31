@@ -4,7 +4,7 @@
   @font-face {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 300 900; /* диапазон */
+    font-weight: 300 700; /* диапазон */
     src: url('./Inter-Variable.woff2') format('woff2-variations');
     font-display: swap; /* по желанию */
   }

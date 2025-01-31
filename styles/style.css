@@ -13,6 +13,9 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-image: url(/svg/background.svg);
+  background-repeat:no-repeat;
+  background-size: cover;
 
   /* Основной шрифт Inter с системным запасным */
   font-family: var(--font-main), Arial, sans-serif;
@@ -20,14 +23,28 @@
   /* Для вариативного шрифта указываем нужный вес
      через font-variation-settings */
   font-variation-settings: "wght" var(--fw-text);
+
+  background-attachment: fixed;
 }
 
 
-.header{}
+.header{
+}
 
-.header__fullwidth{}
+.fullwidth{
+  margin: 100px auto;
+  width: clamp(375px, 47%, 700px);
+  /* width: 100%;
+  padding: var(--header-padding-vertical) var(--header-padding-horizontal); */
+}
 
 .header__content{
+  /* padding: var(--header-padding-vertical) var(--header-padding-horizontal); */
+  padding-block: 128px;
+  background-color: var(--Themes-backgroundColor);
+  border: 2px solid var(--Themes-mainColor);
+  
+
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -39,10 +56,75 @@
 .header__title{
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   font-family: var(--font-accent);
+  color: var(--Themes-mainColor);
 }
 
 .header__text{
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   font-family: var(--font-accent);
+  color: var(--Themes-mainColor);
 
 }
+
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+} 
+
+.card{
+  background-color: var(--Themes-backgroundColor);
+  border: 2px solid var(--Themes-mainColor);
+}
+
+.card__title{
+  padding-block: 3px;
+  padding-inline-start: 10px;
+  font-family: var(--font-main);
+  font-size: 18px;
+  /* font-weight: var(--fw-heading); */
+  font-weight: 700;
+  font-family: 'Inter',  Arial, sans-seri;
+
+}
+
+.card__image img{
+  /* position: relative; */
+  width: 100%;
+  border-block: 2px solid var(--Themes-mainColor);
+}
+
+
+.image__watermark{
+  display: flex;
+  justify-content: end;
+  justify-items: end;
+  padding-inline-end: 25px;
+  padding-left: auto;
+  padding-block-start: 25px;
+  font-family: var(--font-accent);
+  position: absolute;
+  
+  color: var(--Themes-mainColor);
+  opacity: 0.5;
+  
+  -webkit-text-stroke: 1px var(--Themes-backgroundColor); /* Обводка для WebKit-браузеров */
+}
+        
+.card__content{
+  padding: 25px;
+}
+
+.contnt__text{
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card__buttons{}
+
+.card__like-button{}
+
+.card__icon-button{}
+
+.button__text{}
