@@ -29,7 +29,7 @@
 
 .fullwidth {
   margin: 100px auto;
-  width: clamp(375px, 47%, 700px);
+  width: clamp(375px, 50%, 700px);
   /* width: 100%;
   padding: var(--header-padding-vertical) var(--header-padding-horizontal); */
 }
@@ -85,14 +85,16 @@
 }
 
 .card__image {
-  /* position: relative; */
-  aspect-ratio: 1;
   width: 100%;
+  height: 700px;
   border-block: 2px solid var(--Themes-mainColor);
 }
 
 .card__image img{
-width: 100%;}
+  object-fit:cover; 
+  width: 100%;
+  aspect-ratio: 1;
+}
 
 /* Использование @supports для text-stroke */
 @supports (-webkit-text-stroke: 1px var(--Themes-backgroundColor)) or (text-stroke: 1px var(--Themes-backgroundColor)) {
