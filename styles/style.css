@@ -14,36 +14,32 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   background-image: url(/svg/background.svg);
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
-
   /* Основной шрифт Inter с системным запасным */
   font-family: var(--font-main), Arial, sans-serif;
-
   /* Для вариативного шрифта указываем нужный вес
      через font-variation-settings */
   font-variation-settings: "wght" var(--fw-text);
-
   background-attachment: fixed;
 }
 
 
-.header{
-}
+.header {}
 
-.fullwidth{
+.fullwidth {
   margin: 100px auto;
   width: clamp(375px, 47%, 700px);
   /* width: 100%;
   padding: var(--header-padding-vertical) var(--header-padding-horizontal); */
 }
 
-.header__content{
+.header__content {
   /* padding: var(--header-padding-vertical) var(--header-padding-horizontal); */
   padding-block: 128px;
   background-color: var(--Themes-backgroundColor);
   border: 2px solid var(--Themes-mainColor);
-  
+
 
   display: flex;
   flex-direction: column;
@@ -53,49 +49,60 @@
 
 }
 
-.header__title{
+.header__title {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   font-family: var(--font-accent);
   color: var(--Themes-mainColor);
 }
 
-.header__text{
+.header__text {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   font-family: var(--font-accent);
   color: var(--Themes-mainColor);
 
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: column;
   gap: 50px;
-} 
+}
 
-.card{
+.card {
   background-color: var(--Themes-backgroundColor);
   border: 2px solid var(--Themes-mainColor);
 }
 
-.card__title{
+.card__title {
   padding-block: 3px;
   padding-inline-start: 10px;
   font-family: var(--font-main);
   font-size: 18px;
   /* font-weight: var(--fw-heading); */
   font-weight: 700;
-  font-family: 'Inter',  Arial, sans-seri;
+  font-family: 'Inter', Arial, sans-seri;
 
 }
 
-.card__image img{
+.card__image {
   /* position: relative; */
+  aspect-ratio: 1;
   width: 100%;
   border-block: 2px solid var(--Themes-mainColor);
 }
 
+.card__image img{
+width: 100%;}
 
-.image__watermark{
+/* Использование @supports для text-stroke */
+@supports (-webkit-text-stroke: 1px var(--Themes-backgroundColor)) or (text-stroke: 1px var(--Themes-backgroundColor)) {
+  .image__watermark {
+    -webkit-text-stroke: 1px var(--Themes-backgroundColor);
+    text-stroke: 1px var(--Themes-backgroundColor);
+  }
+}
+
+.image__watermark {
   display: flex;
   justify-content: end;
   justify-items: end;
@@ -104,27 +111,67 @@
   padding-block-start: 25px;
   font-family: var(--font-accent);
   position: absolute;
-  
+
   color: var(--Themes-mainColor);
   opacity: 0.5;
-  
-  -webkit-text-stroke: 1px var(--Themes-backgroundColor); /* Обводка для WebKit-браузеров */
+
+  -webkit-text-stroke: 1px var(--Themes-backgroundColor);
+  /* Обводка для WebKit-браузеров */
 }
-        
-.card__content{
+
+.card__content {
   padding: 25px;
 }
 
-.contnt__text{
+.contnt__text {
   display: flex;
   flex-direction: column;
   gap: 27px;
 }
 
-.card__buttons{}
 
-.card__like-button{}
+.card__buttons {
+  display: flex;
+  gap: 10px;
+}
 
-.card__icon-button{}
+/* Стили для кнопки "Like" */
+.card__like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
 
-.button__text{}
+/* Стили для иконок внутри кнопок */
+.card__icon-button {
+  width: 24px;
+  height: 24px;
+  fill: var(--Themes-mainColor);
+  transition: fill 0.3s ease;
+}
+
+
+
+/* Стили для текста внутри кнопок */
+.button__text {
+  margin-left: 8px;
+  font-size: 16px;
+  border: 1px var(--Themes-backgroundColor);
+  transition: color 0.3s ease;
+}
+
+.card__like-button:hover .button__text {
+  color: var(--Themes-mainColor);
+}
+
+
+.card__buttons {}
+
+.card__like-button {}
+
+.card__icon-button {}
+
+.button__text {}
