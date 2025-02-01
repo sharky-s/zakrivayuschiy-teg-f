@@ -9,11 +9,12 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  background-image: url(/svg/background.svg);
+  /* background-image: url(/svg/background.svg); */
+  background-image: var(--background-image);
+
   background-repeat: no-repeat;
   background-size: cover;
   /* Основной шрифт Inter с системным запасным */
@@ -74,24 +75,31 @@
 }
 
 .card__title {
-  padding-block: 3px;
-  padding-inline-start: 10px;
+  /* padding-block: 3px; */
+  /* padding-inline-start: 10px; */
+  padding: 5px 10px;
   font-family: var(--font-main);
   font-size: 18px;
   /* font-weight: var(--fw-heading); */
   font-weight: 700;
-  font-family: 'Inter', Arial, sans-seri;
-
+  font-variation-settings: "wght" var(--fw-heading);
 }
 
 .card__image {
   width: 100%;
   height: 700px;
   border-block: 2px solid var(--Themes-mainColor);
+  position: relative;
 }
 
-.card__image img{
-  object-fit:cover; 
+@media (width <= 375px) {
+  .card__image {
+    height: unset;
+  }
+}
+
+.card__image img {
+  object-fit: cover;
   width: 100%;
   aspect-ratio: 1;
 }
@@ -105,24 +113,40 @@
 }
 
 .image__watermark {
-  display: flex;
-  justify-content: end;
-  justify-items: end;
-  padding-inline-end: 25px;
-  padding-left: auto;
-  padding-block-start: 25px;
+  /* display: flex; */
+  /* justify-content: end; */
+  /* justify-items: end; */
+  /* padding-inline-end: 25px; */
+  /* padding-left: auto; */
+  /* padding-block-start: 25px; */
   font-family: var(--font-accent);
   position: absolute;
+
+  top: 25px;
+  right: 25px;
 
   color: var(--Themes-mainColor);
   opacity: 0.5;
 
+  mix-blend-mode: hard-light;
+
   -webkit-text-stroke: 1px var(--Themes-backgroundColor);
   /* Обводка для WebKit-браузеров */
+}
+@media (width <= 375px) {
+  .image__watermark{
+    right: 13px;
+  }
 }
 
 .card__content {
   padding: 25px;
+}
+
+@media (width <= 375px) {
+  .card__content{
+    padding: 25px 27px;
+  }
 }
 
 .contnt__text {
@@ -144,7 +168,22 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  outline: none;
   transition: transform 0.2s ease-in-out;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+
+
+}
+
+/* Если элемент получает фокус — убираем outline */
+.card__like-button:focus {
+  outline: none;
+}
+
+/* При focus-visible меняем только цвет границы на акцентный */
+.card__like-button:focus-visible {
+  border-color: var(--Themes-mainColor);
 }
 
 /* Стили для иконок внутри кнопок */
@@ -163,17 +202,286 @@
   font-size: 16px;
   border: 1px var(--Themes-backgroundColor);
   transition: color 0.3s ease;
+  width: 130px;
 }
 
-.card__like-button:hover .button__text {
+/* .card__like-button:hover .button__text {
   color: var(--Themes-mainColor);
+} */
+
+
+.card__buttons {
+  margin-top: 25px;
 }
 
+.card__like-button {
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+  margin-left: auto;
+}
 
-.card__buttons {}
-
-.card__like-button {}
+.card__like-button .button__text {
+  padding: 9px 17px;
+}
 
 .card__icon-button {}
 
 .button__text {}
+
+.save-button {
+  border: 2px solid var(--Themes-mainColor, rgba(0, 0, 0, 1));
+  padding: 15px 20px;
+  width: fit-content;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--Themes-backgroundColor);
+  font-family: var(--font-accent), Arial, sans-serif;
+  font-size: 14px;
+}
+
+.save-button svg {
+  width: 21px;
+  height: 21px;
+}
+
+@media (width <= 375px) {
+  .save-button {
+    flex-direction: column;
+  }
+}
+
+.dialog {
+  background-color: var(--Themes-backgroundColor);
+  padding: 30px;
+
+  flex-direction: column;
+  gap: 30px;
+
+  border: none;
+
+  width: 353px;
+
+  display: none;
+
+}
+
+
+.dialog[open=""] {
+  display: flex;
+}
+
+.dialog::backdrop {
+  background: var(--Themes-mainColor, rgba(0, 0, 0, 1));
+  opacity: 75%;
+}
+
+.dialog .dialog__header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog .dialog__header svg {
+  width: 39px;
+  height: 39px;
+}
+
+.dialog .dialog__header .dialog__header__text {
+  font-family: var(--font-accent), Arial, sans-serif;
+  font-size: 14px;
+}
+
+.dialog .dialog__button {
+  padding: 9px 17px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (width <= 375px) {
+  .dialog {
+    width: 341px;
+    padding: 30px 42px;
+  }
+}
+
+
+.button {
+  border: 2px solid var(--Themes-mainColor, rgba(0, 0, 0, 1));
+  background-color: var(--Themes-backgroundColor);
+  font-family: var(--font-accent), Arial, sans-serif;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:focus,
+.card__like-button:focus .button {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--Themes-mainColor);
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--Themes-mainColor, rgba(0, 0, 0, 1));
+  /* Исходное состояние: сдвиг на 100% влево */
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 0;
+}
+
+/* При hover псевдоэлемент сдвигается в положение 0 */
+.button:hover::before {
+  transform: translateX(0);
+}
+
+/* Вложенный текст – относительно позиционированный, чтобы быть поверх псевдоэлемента */
+.button span,
+.button svg * {
+  position: relative;
+  z-index: 1;
+  /* Белый текст на белом фоне */
+  color: var(--Themes-backgroundColor);
+  /* При наложении (разница между белым и черным) blend-режим сделает его черным */
+  mix-blend-mode: difference;
+}
+
+/* Исходное состояние: сердцевина и основное тело не залиты */
+.like-icon .heart .core,
+.like-icon .heart .main-body {
+  fill: none;
+}
+
+/* Контур всегда виден, его заливка — акцентная */
+.like-icon .heart .contour {
+  fill: var(--heart-contour);
+  /* При клике (отмена is-liked) контур возвращается быстро */
+  transition: fill 0.1s linear;
+}
+
+/* Для искр устанавливаем исходную прозрачность */
+.like-icon .sparks {
+  opacity: 0;
+}
+
+/* Плавное изменение fill для сердцевины */
+.like-icon .heart .core {
+  transition: fill 0.3s ease 0.03s; /* при уходе курсора — задержка 0.03s */
+  fill: none;
+}
+.like-icon:hover .heart .core {
+  fill: var(--heart-contour);
+  transition-delay: 0s; /* при наведении сразу меняем fill */
+}
+
+/* Плавное изменение fill для основного тела */
+.like-icon .heart .main-body {
+  fill: none;
+  transition: fill 0.3s ease 0.05s; /* при уходе курсора — без задержки */
+}
+.like-icon:hover .heart .main-body {
+  fill: var(--heart-contour);
+  transition-delay: 0; /* при наведении с задержкой 0.05s */
+
+}
+
+.like-icon:active .heart .core {
+  fill: var(--heart-active);
+  transition: fill 0.3s ease 0s;
+}
+.like-icon:active .heart .main-body {
+  fill: var(--heart-active);
+  transition: fill 0.3s ease 0.05s;
+}
+/* Контур остаётся без изменений в состоянии :active */
+/* При клике (is-liked) сердцевина и основное тело заливаются красным */
+.like-icon.is-liked .heart .core {
+  fill: var(--heart-active);
+  transition: fill 0.3s ease 0s;
+}
+.like-icon.is-liked .heart .main-body {
+  fill: var(--heart-active);
+  transition: fill 0.3s ease 0.05s;
+}
+/* Контур перекрашивается с задержкой 0.06s */
+.like-icon.is-liked .heart .contour {
+  fill: var(--heart-active);
+  transition: fill 0.3s ease 0.06s;
+}
+
+/* Анимация масштабирования для группы сердца */
+@keyframes scaleHeart {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+.like-icon.is-liked .heart {
+  animation: scaleHeart 0.3s ease-in 0.1s forwards;
+}
+
+/* Анимация для искр (появление и исчезание) */
+@keyframes sparksFlash {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.like-icon.is-liked .sparks {
+  animation: sparksFlash 0.3s ease-in 0.3s forwards;
+}
+
+/* Пример: в разметке каждой карточки в тег <img> добавьте уникальный класс, например:
+   <img class="img-filter-1" src="images/img1.jpg" alt="..."> */
+
+/* Фильтр №1: эффект затемнения через оттенки серого */
+.img-filter-1 {
+  filter: grayscale(80%);
+}
+
+/* Фильтр №2: теплый эффект через сепию */
+.img-filter-2 {
+  filter: sepia(70%);
+}
+
+/* Фильтр №3: немного затемненное изображение */
+.img-filter-3 {
+  filter: brightness(90%);
+}
+
+/* Фильтр №4: усиленный контраст */
+.img-filter-4 {
+  filter: contrast(130%);
+}
+
+/* Фильтр №5: повышенная насыщенность цвета */
+.img-filter-5 {
+  filter: saturate(150%);
+}
+
+/* Фильтр №6: легкая инверсия оттенков */
+.img-filter-6 {
+  filter: invert(20%);
+}
+
+/* Фильтр №7: смещение цветового тона */
+.img-filter-7 {
+  filter: hue-rotate(45deg);
+}
+
+/* Множественный фильтр (например, для восьмой карточки или как дополнительный вариант):
+   комбинируем яркость, контраст и насыщенность, чтобы создать более сложный эффект */
+.img-filter-multiple {
+  filter: brightness(110%) contrast(120%) saturate(140%);
+}
