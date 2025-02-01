@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 400 785;
   /* диапазон весов от 400 до 785 */
-  src: url('./Inter-Variable.woff2') format('woff2 supports variations');
+  src: url('./Inter-Variable.woff2') format('woff2 supports variations', 'woff2-variations');
   font-display: swap;
   /* по желанию */
 }
