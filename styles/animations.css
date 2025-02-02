@@ -9,3 +9,33 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+/* Анимация масштабирования для группы сердца */
+@keyframes scaleHeart {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.25);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Анимация для искр (появление и исчезание) */
+  @keyframes sparksFlash {
+    0% {
+      opacity: 0;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }

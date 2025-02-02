@@ -72,12 +72,9 @@
 }
 
 .card__title {
-  /* padding-block: 3px; */
-  /* padding-inline-start: 10px; */
   padding: 5px 10px;
   font-family: var(--font-main);
   font-size: 18px;
-  /* font-weight: var(--fw-heading); */
   font-weight: 700;
   font-variation-settings: "wght" var(--fw-heading);
 }
@@ -101,34 +98,25 @@
   aspect-ratio: 1;
 }
 
-/* Использование @supports для text-stroke */
+/* Если браузер поддерживает text-stroke, заменяем text-shadow на него */
 @supports (-webkit-text-stroke: 1px var(--Themes-backgroundColor)) or (text-stroke: 1px var(--Themes-backgroundColor)) {
   .image__watermark {
     -webkit-text-stroke: 1px var(--Themes-backgroundColor);
     text-stroke: 1px var(--Themes-backgroundColor);
+    text-shadow: none;
   }
 }
 
+/* По умолчанию — фолбэк: используем text-shadow */
 .image__watermark {
-  /* display: flex; */
-  /* justify-content: end; */
-  /* justify-items: end; */
-  /* padding-inline-end: 25px; */
-  /* padding-left: auto; */
-  /* padding-block-start: 25px; */
   font-family: var(--font-accent);
   position: absolute;
-
   top: 25px;
   right: 25px;
-
   color: var(--Themes-mainColor);
   opacity: 0.5;
-
   mix-blend-mode: hard-light;
-
-  -webkit-text-stroke: 1px var(--Themes-backgroundColor);
-  /* Обводка для WebKit-браузеров */
+  text-shadow: 1px 1px 0 var(--Themes-backgroundColor);
 }
 
 @media (width <=375px) {
@@ -305,13 +293,13 @@
   font-size: 14px;
   position: relative;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+
 }
 
-.button:focus,
-.card__like-button:focus .button {
+.button:focus {
   outline: none;
   box-shadow: 2px 2px 0 0 var(--Themes-mainColor);
-  transition: box-shadow 0.3s ease;
 }
 
 .button::before {
@@ -364,7 +352,7 @@
 
 /* Плавное изменение fill для сердцевины */
 .like-icon .heart .core {
-  transition: fill 0.3s ease 0.03s;
+  transition: fill 0.3s linear 0.03s;
   /* при уходе курсора — задержка 0.03s */
   fill: none;
 }
@@ -378,123 +366,95 @@
 /* Плавное изменение fill для основного тела */
 .like-icon .heart .main-body {
   fill: none;
-  transition: fill 0.3s ease 0.05s;
+  transition: fill 0.3s linear 0s;
   /* при уходе курсора — без задержки */
 }
 
 .like-icon:hover .heart .main-body {
   fill: var(--heart-contour);
-  transition-delay: 0;
+  transition-delay: 0.05s;
   /* при наведении с задержкой 0.05s */
 
 }
 
 .like-icon:active .heart .core {
   fill: var(--heart-active);
-  transition: fill 0.3s ease 0s;
+  transition: fill 0.3s linear 0s;
 }
 
 .like-icon:active .heart .main-body {
   fill: var(--heart-active);
-  transition: fill 0.3s ease 0.05s;
+  transition: fill 0.3s linear 0.05s;
 }
 
 /* Контур остаётся без изменений в состоянии :active */
 /* При клике (is-liked) сердцевина и основное тело заливаются красным */
 .like-icon.is-liked .heart .core {
   fill: var(--heart-active);
-  transition: fill 0.3s ease 0s;
+  transition: fill 0.3s linear 0s;
 }
 
 .like-icon.is-liked .heart .main-body {
   fill: var(--heart-active);
-  transition: fill 0.3s ease 0.05s;
+  transition: fill 0.3s linear 0.05s;
 }
 
 /* Контур перекрашивается с задержкой 0.06s */
 .like-icon.is-liked .heart .contour {
   fill: var(--heart-active);
-  transition: fill 0.3s ease 0.06s;
+  transition: fill 0.3s linear 0.06s;
 }
 
-/* Анимация масштабирования для группы сердца */
-@keyframes scaleHeart {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
 
 .like-icon.is-liked .heart {
   animation: scaleHeart 0.3s ease-in 0.1s forwards;
 }
 
-/* Анимация для искр (появление и исчезание) */
-@keyframes sparksFlash {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
 
 .like-icon.is-liked .sparks {
   animation: sparksFlash 0.3s ease-in 0.3s forwards;
 }
 
 /* Пример: в разметке каждой карточки в тег <img> добавьте уникальный класс, например:
-   <img class="img-filter-1" src="images/img1.jpg" alt="..."> */
+   <img class="filter-grey" src="images/img1.jpg" alt="..."> */
 
 /* Фильтр №1: эффект затемнения через оттенки серого */
-.img-filter-1 {
+.filter-grey {
   filter: grayscale(80%);
 }
 
 /* Фильтр №2: теплый эффект через сепию */
-.img-filter-2 {
+.filter-sepia {
   filter: sepia(70%);
 }
 
 /* Фильтр №3: немного затемненное изображение */
-.img-filter-3 {
+.filter-brightness-lower {
   filter: brightness(90%);
 }
 
 /* Фильтр №4: усиленный контраст */
-.img-filter-4 {
+.filter-contrast-high {
   filter: contrast(130%);
 }
 
 /* Фильтр №5: повышенная насыщенность цвета */
-.img-filter-5 {
+.filter-saturation-high {
   filter: saturate(150%);
 }
 
 /* Фильтр №6: легкая инверсия оттенков */
-.img-filter-6 {
+.filter-color-inversion {
   filter: invert(20%);
 }
 
 /* Фильтр №7: смещение цветового тона */
-.img-filter-7 {
+.filter-hue-rotate {
   filter: hue-rotate(45deg);
 }
 
 /* Множественный фильтр (например, для восьмой карточки или как дополнительный вариант):
    комбинируем яркость, контраст и насыщенность, чтобы создать более сложный эффект */
-.img-filter-multiple {
+.filter-multiple {
   filter: brightness(110%) contrast(120%) saturate(140%);
 }
