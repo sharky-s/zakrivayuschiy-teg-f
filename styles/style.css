@@ -2,11 +2,11 @@
 
 Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
 ✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+✦ card__like-button — для обозначения текстового элемента внутри кнопки
 
 */
 .page {
@@ -153,41 +153,36 @@
 }
 
 /* Стили для кнопки "Like" */
-.card__like-button {
+.card__icon-button {
   background: none;
   border: none;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: end;
   outline: none;
-  transition: transform 0.2s ease-in-out, border-color 0.3s ease;
+  transition: transform 0.2s ease-in-out, border-color 0.3s ease, fill 0.3s ease;
   box-sizing: border-box;
   justify-content: end;
   gap: 12px;
   margin-left: auto;
   padding: 0;
+  fill: var(--Themes-mainColor);
+  align-self: stretch;
 }
 
 /* Если элемент получает фокус — убираем outline */
-.card__like-button:focus {
+.card__icon-button:focus {
   outline: none;
 }
 
 /* При focus-visible меняем только цвет границы на акцентный */
-.card__like-button:focus-visible {
+.card__icon-button:focus-visible {
   border-color: var(--Themes-mainColor);
 }
 
-/* Стили для иконок внутри кнопок */
-.card__icon-button {
-  width: 24px;
-  height: 24px;
-  fill: var(--Themes-mainColor);
-  transition: fill 0.3s ease;
-}
 
 /* Стили для текста внутри кнопок */
-.button__text {
+.card__like-button {
   font-size: 14px;
   line-height: 12.6px;
   transition: color 0.3s ease;
@@ -196,17 +191,17 @@
   box-sizing: border-box;
 }
 
-/* .card__like-button:hover .button__text {
+/* .card__icon-button:hover .card__like-button {
   color: var(--Themes-mainColor);
 } */
 
-.card__like-button .button__text {
+.card__icon-button .card__like-button {
   padding: 9px 17px;
 }
 
 .save-button {
   border: 2px solid var(--Themes-mainColor, rgba(0, 0, 0, 1));
-  padding: 15px 20px;
+  padding: 15px 19px;
   width: fit-content;
   align-self: center;
   display: flex;
@@ -224,6 +219,7 @@
   height: 21px;
 }
 
+
 @media (width <=375px) {
   .save-button {
     flex-direction: column;
@@ -233,13 +229,11 @@
 .dialog {
   background-color: var(--Themes-backgroundColor);
   padding: 30px;
-
   flex-direction: column;
   gap: 30px;
-
   border: none;
-
   width: 353px;
+  
 
   display: none;
 }
@@ -268,6 +262,8 @@
 .dialog .dialog__header .dialog__header__text {
   font-family: var(--font-accent), Arial, sans-serif;
   font-size: 14px;
+  line-height: 21px;
+  text-transform:uppercase ;
 }
 
 .dialog .dialog__button {
@@ -293,6 +289,7 @@
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .button:focus {
@@ -321,11 +318,12 @@
 
 /* Вложенный текст – относительно позиционированный, чтобы быть поверх псевдоэлемента */
 .button span,
-.button svg * {
+.button svg {
   position: relative;
   z-index: 1;
   /* Белый текст на белом фоне */
   color: var(--Themes-backgroundColor);
+  --icon-color: var(--Themes-backgroundColor);
   /* При наложении (разница между белым и черным) blend-режим сделает его черным */
   mix-blend-mode: difference;
 }
