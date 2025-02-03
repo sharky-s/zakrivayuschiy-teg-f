@@ -46,13 +46,13 @@
 
 .header__title {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), Arial, sans-serif;
   color: var(--Themes-mainColor);
 }
 
 .header__text {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), Arial, sans-serif;
   color: var(--Themes-mainColor);
   text-transform: uppercase;
 }
@@ -107,7 +107,7 @@
 
 /* По умолчанию — фолбэк: используем text-shadow */
 .image__watermark {
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), Arial, sans-serif;
   position: absolute;
   top: 25px;
   right: 25px;
@@ -122,16 +122,18 @@
   .image__watermark {
     right: 13px;
   }
+
+  .card__content {
+    padding: 25px 27px;
+  }
+
+  .header__content {
+    padding-block: 120px;
+  }
 }
 
 .card__content {
   padding: 25px;
-}
-
-@media (width <=375px) {
-  .card__content {
-    padding: 25px 27px;
-  }
 }
 
 .contnt__text {
@@ -158,16 +160,17 @@
   border: none;
   cursor: pointer;
   display: flex;
-  align-items: end;
+  align-items: center;
   outline: none;
   transition: transform 0.2s ease-in-out, border-color 0.3s ease, fill 0.3s ease;
   box-sizing: border-box;
-  justify-content: end;
+  justify-content: center;
   gap: 12px;
   margin-left: auto;
   padding: 0;
   fill: var(--Themes-mainColor);
   align-self: stretch;
+  height: 100%;
 }
 
 /* Если элемент получает фокус — убираем outline */
@@ -179,7 +182,6 @@
 .card__icon-button:focus-visible {
   border-color: var(--Themes-mainColor);
 }
-
 
 /* Стили для текста внутри кнопок */
 .card__like-button {
@@ -219,10 +221,18 @@
   height: 21px;
 }
 
+.img-container svg {
+  width: 21px;
+  height: 21px;
+}
 
 @media (width <=375px) {
   .save-button {
     flex-direction: column;
+  }
+  .save-button svg {
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -233,7 +243,7 @@
   gap: 30px;
   border: none;
   width: 353px;
-  
+  border: 2px solid var(--Themes-mainColor, rgba(0, 0, 0, 1));
 
   display: none;
 }
@@ -263,7 +273,7 @@
   font-family: var(--font-accent), Arial, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  text-transform:uppercase ;
+  text-transform: uppercase;
 }
 
 .dialog .dialog__button {
@@ -277,7 +287,8 @@
 @media (width <=375px) {
   .dialog {
     width: 341px;
-    padding: 30px 42px;
+    padding: 30px 40px;
+    gap: 18px;
   }
 }
 
@@ -328,6 +339,12 @@
   mix-blend-mode: difference;
 }
 
+.like-icon {
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  height: 38px;
+}
+
 /* Исходное состояние: сердцевина и основное тело не залиты */
 .like-icon .heart .core,
 .like-icon .heart .main-body {
@@ -359,10 +376,14 @@
   /* при наведении сразу меняем fill */
 }
 
-.like-icon:focus .heart .core{
+.like-icon:focus .heart .core {
   fill: var(--heart-active);
 }
 
+.like-icon:focus-visible {
+  outline: none;
+  border-color: var(--Themes-mainColor);
+}
 
 /* Плавное изменение fill для основного тела */
 .like-icon .heart .main-body {
@@ -459,4 +480,16 @@
    комбинируем яркость, контраст и насыщенность, чтобы создать более сложный эффект */
 .filter-multiple {
   filter: brightness(110%) contrast(120%) saturate(140%);
+}
+
+.icon-small{
+  width: 21px;
+  height: 21px;
+}
+
+@media (width <=375px) {
+  .icon-small{
+    width: 28px;
+    height: 28px;
+  }
 }
