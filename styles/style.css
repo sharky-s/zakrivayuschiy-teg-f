@@ -149,7 +149,7 @@
 
 .card__buttons {
   display: flex;
-  align-items: end;
+  align-items: center;
   margin-top: 25px;
   gap: 6px;
 }
@@ -157,7 +157,8 @@
 /* Стили для кнопки "Like" */
 .card__icon-button {
   background: none;
-  border: none;
+  border: 2px solid transparent;
+  /* border: none; */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -165,12 +166,11 @@
   transition: transform 0.2s ease-in-out, border-color 0.3s ease, fill 0.3s ease;
   box-sizing: border-box;
   justify-content: center;
-  gap: 12px;
+  /* gap: 12px; */
   margin-left: auto;
   padding: 0;
   fill: var(--Themes-mainColor);
-  align-self: stretch;
-  height: 100%;
+  /* height: 100%; */
 }
 
 /* Если элемент получает фокус — убираем outline */
@@ -288,6 +288,8 @@
   .dialog {
     width: 341px;
     padding: 30px 40px;
+  }
+  .dialog .dialog__header{
     gap: 18px;
   }
 }
@@ -340,9 +342,7 @@
 }
 
 .like-icon {
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease;
-  height: 38px;
+  height: 34px;
 }
 
 /* Исходное состояние: сердцевина и основное тело не залиты */
